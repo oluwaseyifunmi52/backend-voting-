@@ -12,6 +12,17 @@ const userSchema = new mongoose.Schema({
         unique: true,
     },
 
+    password: {
+        type: String,
+        required: true,
+    },
+
+    role: {
+        type: String,
+        enum: ["voter", "admin"],
+        default: "voter",
+    },
+
     cloudinary: {
         public_id: {
             type: String,

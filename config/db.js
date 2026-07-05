@@ -8,6 +8,12 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
     console.log("DNS servers:", dns.getServers());
 
+    // TEMPORARY DEBUG LINE - remove after fixing
+    console.log(
+        "Mongo URI (masked):",
+        process.env.MONGO_URI?.replace(/:[^:@]+@/, ":****@")
+    );
+
     try {
         await mongoose.connect(process.env.MONGO_URI);
         console.log("✅ MongoDB connected successfully");
