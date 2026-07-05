@@ -29,7 +29,7 @@ app.use(cors({
     origin: [
         "http://localhost:5173",
         "https://voter-44bt.vercel.app/",
-        "https://backend-voting-jl5m.onrender.com"
+        
     ],
 
     methods: ["GET", "POST", "PUT", "DELETE"],
