@@ -40,7 +40,18 @@ const electionSchema = new mongoose.Schema(
             ref: "User",
         },
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+        toJSON: {
+            virtuals: true,
+            transform: (doc, ret) => {
+                ret.id = ret._id.toString();
+                delete ret._id;
+                delete ret.__v;
+                return ret;
+            },
+        },
+    }
 );
 
 //  Check if election is running
