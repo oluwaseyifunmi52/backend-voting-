@@ -13,6 +13,7 @@ const adminRoute = require("./routes/adminRoute");
 const voteRoute = require("./routes/voteRoute");
 const candidateRoute = require("./routes/candidateRoute");
 const userRoute = require("./routes/userRoute");
+const electionRoute = require("./routes/electionRoute");
 
 // middleware
 const errorHandler = require("./middlewares/errorMiddleware");
@@ -28,12 +29,12 @@ connectDB();
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://voter-44bt.vercel.app/",
-        
+        "https://voter-44bt.vercel.app",
+        "https://backend-voting-online.onrender.com"
     ],
 
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
 
@@ -51,6 +52,7 @@ app.use("/api/admin", adminRoute);
 app.use("/api/votes", voteRoute);
 app.use("/api/candidates", candidateRoute);
 app.use("/api/users", userRoute);
+app.use("/api/elections", electionRoute);
 
 //  error middleware (MUST be last)
 app.use(errorHandler);
